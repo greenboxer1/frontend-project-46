@@ -22,7 +22,8 @@
   "homepage": "https://github.com/greenboxer1/frontend-project-46#readme",
   "dependencies": {
     "commander": "^10.0.0",
-    "dos2unix": "^1.1.2"
+    "dos2unix": "^1.1.2",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.36.0",

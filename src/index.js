@@ -16,13 +16,13 @@ const genDiff = (path1, path2) => {
     if (_.has(data1, key) && _.has(data2, key) && data1[key] !== data2[key]) {
       return { key, type: 'edited', value: [data1[key], data2[key]] };
     }
-    return { key, type: 'unchanged', value: data2[key]};
+    return { key, type: 'unchanged', value: data2[key] };
   });
 
   const renderDiff = (diff) => {
     const render = diff.reduce((acc, piece) => {
-      const key = piece.key;
-      const value = piece.value;
+      const { key } = piece;
+      const { value } = piece;
       let rendered;
       switch (piece.type) {
         case 'deleted':
@@ -37,15 +37,12 @@ const genDiff = (path1, path2) => {
         default:
           rendered = `    ${key}: ${value}\n`;
       }
-      acc += rendered
-      return acc;
-    }, '')
+      return acc + rendered;
+    }, '');
     return `{\n${render}}`;
-  }
+  };
 
   return renderDiff(diff);
 };
-
-console.log(genDiff('file1.json', 'file2.json'));
 
 export default genDiff;
